@@ -1,0 +1,38 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.allergy_helper_project"
+    compileSdk = project.hasProperty('flutter.compileSdkVersion') ? flutter.compileSdkVersion.toInteger() : 33
+    ndkVersion = "27.0.12077973"
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8" // Ensure jvmTarget is a string.
+    }
+
+    defaultConfig {
+        applicationId = "com.example.allergy_helper_project"
+        minSdk = 23
+        targetSdk = project.hasProperty('flutter.targetSdkVersion') ? flutter.targetSdkVersion.toInteger() : 33
+        versionCode = project.hasProperty('flutter.versionCode') ? flutter.versionCode.toInteger() : 1
+        versionName = project.hasProperty('flutter.versionName') ? flutter.versionName : "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
